@@ -3,13 +3,16 @@ import requests from '../request'
 import axios from 'axios'
 
 const Main = () => {
+    
     const [films, setFilm]=useState([])
     const film= films[Math.floor(Math.random() * films.length)]
+    
     useEffect(() => {
         axios.get(requests.requestPopular).then((response) => {
             setFilm(response.data.results)
         })
     },[])
+
     const panjangdescr = (str, num)=>{
         if(str?.length > num){
             return str.slice(0, num)+'....';
